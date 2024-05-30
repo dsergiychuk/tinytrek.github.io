@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny Trek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .container {
+            width: 1024px;
+            height: 576px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #E0E8D3; /* Soft pastel green background color */
+        }
+        h1 {
+            color: #7D946D; /* Soft pastel green color for the title */
+        }
+        p {
+            color: #3E4828; /* Soft pastel brown color for text */
+            margin-top: 10px;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #A1703C; /* Soft pastel brown color for button */
+            color: #FFFFFF; /* White color for button text */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            font-family: 'Press Start 2P', cursive; /* Same font as everything else */
+            border: none; /* Remove border */
+        }
+        .button:hover {
+            background-color: #CD8C5C; /* Lighter pastel brown color on hover */
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 20% auto; /* 20% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%; /* Could be more or less, depending on screen size */
+            border-radius: 5px;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <!-- Add music -->
+  <audio autoplay loop>
+    <source src="audio/map.wav" type="audio/wav">
+  </audio>
+    <div class="container">
+        <h1>Welcome to Tiny Trek</h1>
+        <p>Pokemon Inspired</p>
+        
+        <div class="button-container">
+            <a href="gamePlay.html" class="button">Start Game</a>
+            <button class="button" onclick="openInstructions()">Instructions</button>
+        </div>
+    </div>
+    
+    <!-- Modal for instructions -->
+    <div id="instructionModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeInstructions()">&times;</span>
+            <h2>Instructions</h2>
+            <p>Use the following keys to navigate:</p>
+            <ul>
+                <li>Key A: Move Left</li>
+                <li>Key W: Move Up</li>
+                <li>Key D: Move Right</li>
+                <li>Key S: Move Down</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Function to open the instruction modal
+        function openInstructions() {
+            document.getElementById("instructionModal").style.display = "block";
+        }
+
+        // Function to close the instruction modal
+        function closeInstructions() {
+            document.getElementById("instructionModal").style.display = "none";
+        }
+
+        // Close the modal if the user clicks anywhere outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById("instructionModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        // Listen for Enter key press to start the game
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                window.location.href = "gamePlay.html"; 
+            }
+        });
+    </script>
+</body>
+</html>
